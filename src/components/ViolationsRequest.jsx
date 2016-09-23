@@ -48,6 +48,7 @@ class ViolationsRequest extends Component {
     const violationElements = this.state.doors.map((door, idx) => {
       if (this.props.submit == true &&
           door.restaurant !== null &&
+          door.restaurant.length >= 3 &&
           door.restaurant.indexOf(this.props.restaurant) !== -1) {
         return (
           <ViolationsView key={idx}

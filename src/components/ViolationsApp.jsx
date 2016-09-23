@@ -17,7 +17,6 @@ class ViolationsApp extends Component {
   handleSubmit(e) {
     e.preventDefault();
     this.setState({ submit: true });
-
   }
   handleChange(e) {
     const data = (e.target.value).toUpperCase();
@@ -27,7 +26,7 @@ class ViolationsApp extends Component {
     return (
         <div>
           <form  onSubmit={this.handleSubmit}>
-            <input value={this.state.restaurant} onChange={this.handleChange} />
+            <input value={this.state.restaurant} onChange={this.handleChange} placeholder="Restaurant lookup" type="text" />
             <input type="submit" />
           </form>
           <ViolationsRequest restaurant={this.state.restaurant} submit={this.state.submit} />
