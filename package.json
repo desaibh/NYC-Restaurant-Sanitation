@@ -1,0 +1,35 @@
+{
+  "name": "nycrestauranthealthgrades",
+  "version": "1.0.0",
+  "description": "NYC Restaurant Health Grades and Inspection Information",
+  "main": "webpack.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack-dev-server --hot --progress --colors"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/desaibh/NYC-Restaurant-Sanitation.git"
+  },
+  "author": "Bhavika Desai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/desaibh/NYC-Restaurant-Sanitation/issues"
+  },
+  "homepage": "https://github.com/desaibh/NYC-Restaurant-Sanitation#readme",
+  "dependencies": {
+    "babel-core": "^6.14.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-react": "^6.11.1",
+    "firebase": "^3.4.0",
+    "install": "^0.8.1",
+    "npm": "^3.10.7",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
+    "superagent": "^2.3.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  }
+}
