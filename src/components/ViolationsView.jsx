@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Comments from './Comments/Comments.jsx'
 
 class ViolationsView extends Component {
   render() {
@@ -22,6 +23,7 @@ class ViolationsView extends Component {
         Critical Flag: {this.props.criticalFlag}<br />
         Score: {this.props.score}
         </p>
+        <Comments />
       </div>
     );
   }

@@ -12,3 +12,25 @@ input[type=text] {
   border-radius: 4px;
   box-sizing: border-box;
 }
+.comments {
+  font-family: 'Poiret One', cursive;
+  background: rgba(166, 209, 255, 0.9);
+  margin-top: 1.5rem;
+  border-radius: 1.3rem;
+}
+#comments-modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  background: rgb(255, 255, 255);
+}
+#show-comments {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#close {
+  color: blue;
+
+}
