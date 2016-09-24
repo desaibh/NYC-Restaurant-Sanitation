@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import request from 'superagent';
 import CommentsView from './CommentsView.jsx';
 import CommentsWindowModal from './CommentsWindowModal.jsx';
@@ -7,7 +7,7 @@ const propTypes = {
   restaurant: React.PropTypes.string,
 };
 
-class Comments extends React.Component {
+class Comments extends Component {
   constructor(props) {
     super(props);
     this.state = {

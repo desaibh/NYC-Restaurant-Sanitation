@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './Main.jsx';
+import Main from '../Login/Main.jsx';
 
 const propTypes = {
   // url: React.PropTypes.string.isRequired,
