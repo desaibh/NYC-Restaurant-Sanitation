@@ -34,19 +34,13 @@ class Main extends Component {
       console.log('user is signed out')
     })
   }
-  loggedInLinks() {
-      return (
-        <div id="sign-out">
-        </div>
-      )
-  }
   render() {
     return (
       <div>
         <div id="main-nav">
-          <h1>MAIN COMPONENT</h1>
+          <h1>TELL US YOUR STORY</h1>
           {this.state.loggedIn ?  <FormForComments showHide={this.props.showHide} /> : <SignUp /> }
-          <h2 id="close"><Link to="/">CLOSE</Link></h2>
+          <h2 id="close" ><Link to="/">CLOSE</Link></h2>
 
         </div>
         <div id="main-content">

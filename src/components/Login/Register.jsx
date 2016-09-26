@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import firebase from '../../../firebase.config.js';
 import { withRouter } from 'react-router';
 
-
 class Register extends Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      showHide: 'show'
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,21 +32,30 @@ class Register extends Component {
         .set({first_name: '', last_name: '', email: username})
       })
       .then(() => {
-        // this.props.router.push('signIn/comments');
+        if (this.state.showHide == 'hide') {
+          this.setState({
+            showHide: 'show'
+          });
+        } else {
+          this.setState({
+            showHide: 'hide'
+          });
+        }
       });
   }
   render() {
     return (
-      <div>
+      <div className={this.state.showHide}>
         <div id="register-form">
+          <h1>Please register a new account to leave a comment.</h1>
           <div>
             <input name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>
           <div>
             <input name="password" onChange={this.handleChange} type="password" placeholder="password" />
           </div>
-          <button className="btn" onClick={this.handleSubmit}>Register</button>
-
+          <div className="clear"></div>
+          <input type="submit" value="Register" onClick={this.handleSubmit} />
         </div>
       </div>
     )

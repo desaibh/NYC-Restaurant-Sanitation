@@ -10,10 +10,10 @@ form {
   margin: 0 10%;
   width: 80%;
 }
-input[type="text"] {
+input[type="text"], input[type="password"], input[type="number"] {
   display: inline-block;
   width: 60%;
-  margin-right: 1%;
+  margin: .5% 1%;
   float: left;
   font-family: sans-serif;
   font-size: 18px;
@@ -27,7 +27,7 @@ input[type="text"] {
   border: solid 5px #dcdcdc;
   text-align: center;
 }
-input[type="text"]:focus {
+input[type="text"]:focus, input[type="password"]:focus, input[type="number"] {
   border: solid 5px #dcdcdc;
   box-shadow: none;
   transition: box-shadow 0.3s, border 0.3s;
@@ -36,7 +36,7 @@ input[type="submit"] {
   display: inline-block;
   width: 30%;
   padding: 10px;
-  margin-left: 1%;
+  margin: .5% 1%;
   font-size: 18px;
   font-family: sans-serif;
   border-radius: 0;
@@ -78,13 +78,16 @@ header h1 {
 }
 #comments-modal {
   position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
+  height: 80%;
+  width: 80%;
+  top: 10%;
+  right: 10%;
   background: rgb(255, 255, 255);
+  border: 5px #dcdcdc solid;
 }
 #show-comments {
   position: relative;
+  padding: 1rem;
   height: 100%;
   width: 100%;
 }
@@ -92,13 +95,16 @@ header h1 {
   color: blue;
 }
 #container {
-  max-width: 980px;
+  max-width: 61rem;
   margin: auto;
-  padding: 20px;
+  padding: 1.2rem;
 }
 .show {
   display: block;
 }
 .hide {
   display: none;
+}
+.clear {
+  clear: both;
 }

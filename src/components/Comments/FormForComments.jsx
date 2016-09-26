@@ -3,6 +3,7 @@ import request from 'superagent';
 import firebase from '../../../firebase.config.js';
 import { withRouter } from 'react-router';
 import App from '../App.jsx';
+import PostComments from './PostComments.jsx'
 
 class FormForComments extends Component {
   constructor() {
@@ -31,20 +32,21 @@ class FormForComments extends Component {
                  const individualPostData = postsData[id];
                  return {
                    id,
-                   author: individualPostData.author,
-                   content: individualPostData.content,
-                   likeCount: individualPostData.likeCount,
+                   comment: individualPostData.comment,
+                   restaurant: individualPostData.restaurant,
+                   location: individualPostData.location,
+                   rating: individualPostData.rating,
                  };
                });
              }
              this.setState({ posts });
            });
   }
-  handlePublish({ id, content, author, likeCount }) {
+  handlePublish({ id, restaurant, location, comment, rating }) {
     if (id) {
-      this.httpUpdatePost({ id, content, author, likeCount });
+      this.httpUpdatePost({ id, restaurant, location, comment, rating });
     } else {
-      this.httpPublishPost({ content, author, likeCount });
+      this.httpPublishPost({ restaurant, location, comment, rating });
     }
   }
   httpDeletePost(id) {
@@ -54,18 +56,18 @@ class FormForComments extends Component {
              this.httpGetPosts();
            });
   }
-  httpUpdatePost({ id, content, author, likeCount }) {
+  httpUpdatePost({ id, restaurant, location, comment, rating }) {
     const url = `https://restaurant-react.firebaseio.com/posts/${id}.json`;
     request.patch(url)
-           .send({ content, author, likeCount })
+           .send({ restaurant, location, comment, rating })
            .then(() => {
              this.httpGetPosts();
            });
   }
-  httpPublishPost({ content, author }) {
+  httpPublishPost({ restaurant, location, comment, rating }) {
     const url = 'https://restaurant-react.firebaseio.com/posts.json';
     request.post(url)
-           .send({ content, author, likeCount: 0 })
+           .send({ restaurant, location, comment, rating })
            .then(() => {
              this.httpGetPosts();
            });
@@ -85,7 +87,7 @@ class FormForComments extends Component {
       <div>
       <button onClick={this.signOut}>Sign Out</button>
       {this.state.signedOut ? <App /> : false }
-      <h1>Welcome to the <mark>DASHBOARD</mark> component, this component is <mark><b>NOT</b></mark> protected</h1>
+      <PostComments handlePublish={this.handlePublish} />
       </div>
     )
   }

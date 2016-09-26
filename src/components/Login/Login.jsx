@@ -44,14 +44,15 @@ class Login extends Component {
     return (
       <div>
         <div id="login-form" className={this.state.showHide}>
-          <h1>Welcome to the <mark>LOGIN</mark> component, this component is <mark><b>NOT</b></mark> protected</h1>
+          <h2>Please login to your account to leave a comment.</h2>
           <div>
             <input name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>
           <div>
             <input name="password" onChange={this.handleChange} type="password" placeholder="password" />
           </div>
-          <button className="btn" onClick={this.handleSubmit}>Login</button>
+          <div className="clear"></div>
+          <input type="submit" value="Login" onClick={this.handleSubmit} />
         </div>
       </div>
     )

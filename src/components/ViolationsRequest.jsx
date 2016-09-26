@@ -1,6 +1,12 @@
 import React, {Component} from 'react';
 import request from 'superagent';
 import ViolationsView from './ViolationsView.jsx';
+import PostComments from './Comments/PostComments.jsx';
+
+const propTypes = {
+  restaurant: React.PropTypes.string,
+  submit: React.PropTypes.boolean,
+};
 
 class ViolationsRequest extends Component {
   constructor() {
@@ -8,6 +14,8 @@ class ViolationsRequest extends Component {
     this.state = {
       doors: [],
       valueFound: false,
+      restaurant: '',
+      location: '',
     };
   }
   componentDidMount() {
@@ -57,6 +65,8 @@ class ViolationsRequest extends Component {
         door.restaurant.length >= 3 &&
         door.restaurant.indexOf(this.props.restaurant) !== -1) {
       this.state.valueFound = true;
+      this.state.restaurant = door.restaurant;
+      this.state.location = door.location;
       return (
         <ViolationsView key={idx}
                         restaurant={door.restaurant}
@@ -78,6 +88,7 @@ class ViolationsRequest extends Component {
         )
       }
     });
+    <PostComments restaurant = {this.state.restaurant} location = {this.state.location} />
     if (this.state.valueFound == false && this.props.submit == true) {
       return (
         <div>
@@ -92,5 +103,7 @@ class ViolationsRequest extends Component {
     )
   }
 }
+
+ViolationsView.propTypes = propTypes;
 
 export default ViolationsRequest;
