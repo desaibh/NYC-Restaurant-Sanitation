@@ -40,7 +40,7 @@ class Main extends Component {
         <div id="main-nav">
           <h1>TELL US YOUR STORY</h1>
           {this.state.loggedIn ?  <FormForComments showHide={this.props.showHide} /> : <SignUp /> }
-          <h2 id="close" ><Link to="/">CLOSE</Link></h2>
+          <h2 id="close" ><Link to="/home">CLOSE</Link></h2>
 
         </div>
         <div id="main-content">

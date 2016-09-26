@@ -1,8 +1,6 @@
 import React from 'react';
 
 const propTypes = {
-  restaurant: React.PropTypes.restaurant,
-  location: React.PropTypes.location,
   rating: React.PropTypes.number,
   comments: React.PropTypes.string,
 }
@@ -16,7 +14,7 @@ class PostComments extends React.Component {
       localRating: this.props.rating || '',
       localComment: this.props.comment || '',
     };
-    this.props = this.handleEditOfRestaurant.bind(this);
+    this.handleEditOfRestaurant = this.handleEditOfRestaurant.bind(this);
     this.handleEditOfLocation = this.handleEditOfLocation.bind(this);
     this.handleEditOfRating = this.handleEditOfRating.bind(this);
     this.handleEditOfComment = this.handleEditOfComment.bind(this);
