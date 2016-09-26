@@ -92,7 +92,7 @@ class ViolationsRequest extends Component {
     if (this.state.valueFound == false && this.props.submit == true) {
       return (
         <div>
-          <h1> No results found for {this.state.restaurant}.</h1>
+          <h1> No results found.</h1>
         </div>
       )
     };

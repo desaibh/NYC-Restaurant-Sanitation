@@ -3,6 +3,7 @@ body {
   width: 100%;
   margin: 0px;
   padding: 0px;
+  font-family: sans-serif
 };
 form {
   text-align: center;
@@ -69,12 +70,15 @@ header h1 {
   font-family: sans-serif;
   font-variant: small-caps;
 }
-
 .comments {
-  font-family: 'Poiret One', cursive;
   background: rgba(201, 100, 50, 1);
   margin-top: 1.5rem;
   border-radius: 1.3rem;
+  font-size: 18px;
+  line-height: 2rem;
+  width: 100%;
+  color: white;
+  font-family: sans-serif;
 }
 #comments-modal {
   position: fixed;
@@ -84,6 +88,7 @@ header h1 {
   right: 10%;
   background: rgb(255, 255, 255);
   border: 5px #dcdcdc solid;
+  overflow: scroll;
 }
 #show-comments {
   position: relative;

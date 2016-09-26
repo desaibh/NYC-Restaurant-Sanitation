@@ -7,6 +7,7 @@ import FormForComments from '../Comments/FormForComments.jsx';
 
 const propTypes = {
   children: React.PropTypes.element,
+  closeModal: React.PropTypes.func,
 }
 
 class Main extends Component {
@@ -39,8 +40,8 @@ class Main extends Component {
       <div>
         <div id="main-nav">
           <h1>TELL US YOUR STORY</h1>
-          {this.state.loggedIn ?  <FormForComments showHide={this.props.showHide} /> : <SignUp /> }
-          <h2 id="close" ><Link to="/home">CLOSE</Link></h2>
+          {this.state.loggedIn ?  <FormForComments showHide={this.props.showHide} /> : <SignUp closeModal={this.props.closeModal} /> }
+          <h2 id="close" onClick={this.props.closeModal}><Link to="/home">CLOSE</Link></h2>
 
         </div>
         <div id="main-content">

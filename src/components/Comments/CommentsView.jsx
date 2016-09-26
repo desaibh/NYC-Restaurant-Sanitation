@@ -6,8 +6,8 @@ const propTypes = {
 
 const CommentsView = ({ openModal }) => {
   return (
-    <div className="comments">
-      <button onClick={openModal}>Comment Here</button>
+    <div>
+      <button onClick={openModal} className="comments">Tell Us About Your Experience</button>
     </div>
   );
 };

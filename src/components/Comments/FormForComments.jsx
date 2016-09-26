@@ -4,6 +4,8 @@ import firebase from '../../../firebase.config.js';
 import { withRouter } from 'react-router';
 import App from '../App.jsx';
 import PostComments from './PostComments.jsx'
+import UpdateComments from './UpdateComments.jsx'
+import UpdateCommentView from './UpdateCommentView.jsx'
 
 class FormForComments extends Component {
   constructor() {
@@ -11,8 +13,12 @@ class FormForComments extends Component {
     this.state = {
       signedOut: false,
       posts: [],
+      updateComment: false,
+      newComment: false,
     }
     this.signOut = this.signOut.bind(this);
+    this.updateRequest = this.updateRequest.bind(this);
+    this.newRequest = this.newRequest.bind(this);
     this.handlePublish = this.handlePublish.bind(this);
     this.httpUpdatePost = this.httpUpdatePost.bind(this);
     this.httpPublishPost = this.httpPublishPost.bind(this);
@@ -66,8 +72,9 @@ class FormForComments extends Component {
   }
   httpPublishPost({ restaurant, location, comment, rating }) {
     const url = 'https://restaurant-react.firebaseio.com/posts.json';
+    const userID = firebase.auth().currentUser.uid;
     request.post(url)
-           .send({ restaurant, location, comment, rating })
+           .send({ userID, restaurant, location, comment, rating })
            .then(() => {
              this.httpGetPosts();
            });
@@ -82,11 +89,25 @@ class FormForComments extends Component {
       })
     })
   }
+  updateRequest() {
+    this.setState ({
+      updateComment: true,
+    });
+  }
+  newRequest() {
+    this.setState ({
+      newComment: true,
+    });
+  }
   render() {
     return (
       <div>
+      <button onClick={this.newRequest}>New Comments</button>
+      <button onClick={this.updateRequest}>Update Comments</button>
       <button onClick={this.signOut}>Sign Out</button>
       {this.state.signedOut ? <App /> : false }
+      {this.state.newComment ? <PostComments  handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} /> : false }
+      {this.state.updateComment ? <UpdateComments  handleDelete={this.httpDeletePost} handlePublish={this.handlePublish} posts={this.state.posts} /> : false }
       <PostComments handlePublish={this.handlePublish} />
       </div>
     )

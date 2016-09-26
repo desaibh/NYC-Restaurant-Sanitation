@@ -3,11 +3,13 @@ import { Link, withRouter } from 'react-router';
 import App from '../App.jsx'
 
 const propTypes = {
+  restaurant: React.PropTypes.number,
+  location: React.PropTypes.string,
   rating: React.PropTypes.number,
   comments: React.PropTypes.string,
 }
 
-class PostComments extends React.Component {
+class UpdateCommentView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +18,10 @@ class PostComments extends React.Component {
       localRating: this.props.rating || '',
       localComment: this.props.comment || '',
       save: false,
+      saveRestaurant: false,
+      saveLocation: false,
+      saveRating: false,
+      saveComment: false,
     };
     this.handleEditOfRestaurant = this.handleEditOfRestaurant.bind(this);
     this.handleEditOfLocation = this.handleEditOfLocation.bind(this);
@@ -79,8 +85,8 @@ class PostComments extends React.Component {
   render() {
     return (
       <div className={this.isSaved() ? 'saved' : 'not-saved'} >
-        <h2> Please Leave Your Comment Here </h2>
-        <form className="post-display" onSubmit={this.handleSubmit}>
+        <h2>Update your Comments Below</h2>
+        <form className="post-display" >
           <input
             type="text"
             name="Restaurant"
@@ -115,8 +121,15 @@ class PostComments extends React.Component {
             />
             <div className="clear"></div>
             <input
+              onSubmit={this.handleDelete}
               type="submit"
-              value="SAVE"
+              value="DELETE"
+              className="hidden"
+            />
+            <input
+              onSubmit={this.handleSubmit}
+              type="submit"
+              value="UPDATE"
               className="hidden"
             />
         </form>
@@ -126,4 +139,4 @@ class PostComments extends React.Component {
   }
 }
 
-export default withRouter(PostComments);
+export default withRouter(UpdateCommentView);
