@@ -10,8 +10,7 @@ const CommentsWindowModal = ({ closeModal }) => {
   return (
     <div id="comments-modal">
       <div id="show-comments">
-        <Main />
-        <h2 id="close" onClick={closeModal}>CLOSE</h2>
+        <Main closeModal={closeModal} />
       </div>
     </div>
   );

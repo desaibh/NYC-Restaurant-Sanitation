@@ -5,10 +5,16 @@ import ViolationsView from './ViolationsView.jsx';
 class ViolationsRequest extends Component {
   constructor() {
     super();
-    this.state = { doors: [] };
+    this.state = {
+      doors: [],
+      valueFound: false,
+    };
   }
   componentDidMount() {
     this.getDOHMHData();
+    this.setState({
+      valueFound: false,
+    })
   }
   getDOHMHData() {
     request.get('/data/healthgrades.json').then((response) => {
@@ -46,31 +52,39 @@ class ViolationsRequest extends Component {
   }
   render() {
     const violationElements = this.state.doors.map((door, idx) => {
-      if (this.props.submit == true &&
-          door.restaurant !== null &&
-          door.restaurant.length >= 3 &&
-          door.restaurant.indexOf(this.props.restaurant) !== -1) {
-        return (
-          <ViolationsView key={idx}
-                          restaurant={door.restaurant}
-                          building={door.building}
-                          street={door.street}
-                          zip={door.zip}
-                          phone={door.phone}
-                          cuisine={door.cuisine}
-                          inspectionDate={door.inspectionDate}
-                          action={door.action}
-                          violationCode={door.violationCode}
-                          violationDescription={door.violationDescription}
-                          criticalFlag={door.criticalFlag}
-                          score={door.score}
-                          grade={door.grade}
-                          gradeDate={door.gradeDate}
-                          inspectionType={door.inspectionType}
+    if (this.props.submit == true &&
+        door.restaurant !== null &&
+        door.restaurant.length >= 3 &&
+        door.restaurant.indexOf(this.props.restaurant) !== -1) {
+      this.state.valueFound = true;
+      return (
+        <ViolationsView key={idx}
+                        restaurant={door.restaurant}
+                        building={door.building}
+                        street={door.street}
+                        zip={door.zip}
+                        phone={door.phone}
+                        cuisine={door.cuisine}
+                        inspectionDate={door.inspectionDate}
+                        action={door.action}
+                        violationCode={door.violationCode}
+                        violationDescription={door.violationDescription}
+                        criticalFlag={door.criticalFlag}
+                        score={door.score}
+                        grade={door.grade}
+                        gradeDate={door.gradeDate}
+                        inspectionType={door.inspectionType}
           />
         )
       }
     });
+    if (this.state.valueFound == false && this.props.submit == true) {
+      return (
+        <div>
+          <h1> No results found for {this.state.restaurant}.</h1>
+        </div>
+      )
+    };
     return (
       <div>
         {violationElements}

@@ -1,15 +1,14 @@
-// This file will handle the login component, this component will log a user into our firebase system
 import React, { Component } from 'react';
 import firebase from '../../../firebase.config.js';
 import { withRouter } from 'react-router';
-
+import FormForComments from '../Comments/FormForComments.jsx';
 
 class Login extends Component {
   constructor() {
     super();
     this.state = {
       username: '',
-      password: ''
+      password: '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,17 +26,25 @@ class Login extends Component {
       .catch((err) => {
         const errorCode = err.code;
         const errorMessage = err.message;
-        console.log(err);
+        alert(err);
       })
       .then(() => {
-        this.props.router.push('/comments');
+        if (this.state.showHide == 'hide') {
+          this.setState({
+            showHide: 'show'
+          });
+        } else {
+          this.setState({
+            showHide: 'hide'
+          });
+        }
       });
   }
   render() {
     return (
       <div>
-      <h1>Welcome to the <mark>LOGIN</mark> component, this component is <mark><b>NOT</b></mark> protected</h1>
-        <div id="login-form">
+        <div id="login-form" className={this.state.showHide}>
+          <h1>Welcome to the <mark>LOGIN</mark> component, this component is <mark><b>NOT</b></mark> protected</h1>
           <div>
             <input name="username" onChange={this.handleChange} type="text" placeholder="username" />
           </div>

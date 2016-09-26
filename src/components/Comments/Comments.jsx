@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import request from 'superagent';
 import CommentsView from './CommentsView.jsx';
 import CommentsWindowModal from './CommentsWindowModal.jsx';
+import Main from '../Login/Main.jsx';
 
 const propTypes = {
   restaurant: React.PropTypes.string,
@@ -21,9 +22,7 @@ class Comments extends Component {
     this.setState({
       modalOpen: true,
     });
-
   }
-
   closeModal() {
     this.setState({
       modalOpen: false,
@@ -33,7 +32,6 @@ class Comments extends Component {
   render() {
     return (
       <div>
-        <h1> Hello </h1>
         <CommentsView
           openModal={this.openModal}
         />

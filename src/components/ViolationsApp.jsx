@@ -24,12 +24,17 @@ class ViolationsApp extends Component {
   }
   render() {
     return (
-        <div>
-          <form  onSubmit={this.handleSubmit}>
-            <input value={this.state.restaurant} onChange={this.handleChange} placeholder="Restaurant lookup" type="text" />
-            <input type="submit" />
-          </form>
-          <ViolationsRequest restaurant={this.state.restaurant} submit={this.state.submit} />
+        <div id='restaurant-input'>
+          <header>
+            <h1>NYC Restaurant Health Grades </h1>
+          </header>
+          <div id="container">
+            <form onSubmit={this.handleSubmit}>
+              <input value={this.state.restaurant} onChange={this.handleChange} placeholder="Restaurant lookup" type="text" />
+              <input type="submit" />
+            </form>
+            <ViolationsRequest restaurant={this.state.restaurant} submit={this.state.submit} />
+          </div>
        </div>
     )
   }

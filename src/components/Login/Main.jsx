@@ -1,12 +1,12 @@
-// This will be our Main component, it will render all of the child components, it will also know if the user is logged in by saving it to state.
-
 import React, { Component } from 'react';
 import require from 'superagent';
 import firebase from '../../../firebase.config.js';
 import { Link } from 'react-router';
+import SignUp from './SignUp.jsx';
+import FormForComments from '../Comments/FormForComments.jsx';
 
 const propTypes = {
-  children: React.PropTypes.element.isRequired,
+  children: React.PropTypes.element,
 }
 
 class Main extends Component {
@@ -14,6 +14,7 @@ class Main extends Component {
     super();
     this.state = {
       loggedIn: false,
+      showHide: 'show',
     }
     this.signOut = this.signOut.bind(this);
   }
@@ -22,7 +23,6 @@ class Main extends Component {
       firebase.auth().onAuthStateChanged((user) => {
         this.setState({
           loggedIn: (user !== null),
-
         })
       })
     }, 200);
@@ -35,29 +35,19 @@ class Main extends Component {
     })
   }
   loggedInLinks() {
-    if (!this.state.loggedIn) {
-      return (
-        <div>
-        <Link to="/login" id="login">Login / </Link>
-        <Link to="/register" id="register">Register </Link>
-        </div>
-      )
-    } else {
       return (
         <div id="sign-out">
-          <Link to='/home' onClick={this.signOut}>Sign Out</Link>
         </div>
       )
-    }
   }
   render() {
     return (
       <div>
         <div id="main-nav">
           <h1>MAIN COMPONENT</h1>
-          {
-            this.loggedInLinks()
-          }
+          {this.state.loggedIn ?  <FormForComments showHide={this.props.showHide} /> : <SignUp /> }
+          <h2 id="close"><Link to="/">CLOSE</Link></h2>
+
         </div>
         <div id="main-content">
           {this.props.children}
