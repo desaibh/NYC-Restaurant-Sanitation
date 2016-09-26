@@ -7,6 +7,8 @@ const propTypes = {
   location: React.PropTypes.string,
   rating: React.PropTypes.number,
   comments: React.PropTypes.string,
+  handlePublish: React.PropTypes.func,
+  handleDelete: React.PropTypes.func,
 }
 
 class UpdateCommentView extends React.Component {
@@ -66,6 +68,7 @@ class UpdateCommentView extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.handlePublish({
+      id: this.props.id,
       restaurant: this.state.localRestaurant,
       location: this.state.localLocation,
       comment: this.state.localComment,
@@ -75,6 +78,7 @@ class UpdateCommentView extends React.Component {
   }
   handleDeleteClick() {
     this.props.handleDelete(this.props.id);
+    alert(this.props.id);
   }
   isSaved() {
     return this.props.restaurant === this.state.localRestaurant &&
@@ -121,16 +125,16 @@ class UpdateCommentView extends React.Component {
             />
             <div className="clear"></div>
             <input
-              onSubmit={this.handleDelete}
+               type="submit"
+               value="UPDATE"
+               className="hidden"
+               onClick={this.handleSubmit}
+             />
+            <input
               type="submit"
               value="DELETE"
               className="hidden"
-            />
-            <input
-              onSubmit={this.handleSubmit}
-              type="submit"
-              value="UPDATE"
-              className="hidden"
+              onClick={this.handleDeleteClick}
             />
         </form>
         {this.state.save ? <Link to="/home" /> : false}

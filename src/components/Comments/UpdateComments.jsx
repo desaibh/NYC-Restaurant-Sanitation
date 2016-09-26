@@ -11,13 +11,15 @@ const propTypes = {
 class UpdateComments extends React.Component {
   render() {
     const userData = firebase.auth().currentUser.uid;
+    alert(userData);
     const postElements = this.props.posts.map((post, idx) => {  // for each of the posts... give an li
-      // if (userData == post.userID) {
+      if (userData == post.userID) {
         return (
-          <div key={post.idx}>
+          <div key={idx}>
             <UpdateCommentView
               handleDelete={this.props.handleDelete}
               handlePublish={this.props.handlePublish}
+              id={post.id}
               restaurant={post.restaurant}
               location={post.location}
               comment={post.comment}
@@ -25,7 +27,8 @@ class UpdateComments extends React.Component {
             />
           </div>
         );
-      //  }
+      }
+        alert(post.userID);
     });
     return (
       <div>

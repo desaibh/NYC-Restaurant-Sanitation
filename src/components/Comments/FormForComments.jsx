@@ -38,6 +38,7 @@ class FormForComments extends Component {
                  const individualPostData = postsData[id];
                  return {
                    id,
+                   userID: individualPostData.userID,
                    comment: individualPostData.comment,
                    restaurant: individualPostData.restaurant,
                    location: individualPostData.location,

@@ -22,7 +22,6 @@ class PostComments extends React.Component {
     this.handleEditOfRating = this.handleEditOfRating.bind(this);
     this.handleEditOfComment = this.handleEditOfComment.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDeleteClick = this.handleDeleteClick.bind(this);
     this.isSaved = this.isSaved.bind(this);
   }
   componentWillReceiveProps(nextProps) {
@@ -66,9 +65,6 @@ class PostComments extends React.Component {
       rating: this.state.localRating
     });
     this.setState({ save: 'true' })
-  }
-  handleDeleteClick() {
-    this.props.handleDelete(this.props.id);
   }
   isSaved() {
     return this.props.restaurant === this.state.localRestaurant &&
