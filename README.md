@@ -1,7 +1,7 @@
-# PROJECT 2 - NYC Restaurant Health Grades
+# PROJECT - NYC Restaurant Health Grades
 
 ## PROJECT MVP
-Build a restaurant health grades application that allows users to login/register and submit comments about an experience that they had at the restaurant.
+Build a restaurant health grades application that allows users to login/register and store comments about an experience that they had at a New York City restaurant.
 
 ## TECHNOLOGIES
 * React
@@ -20,7 +20,7 @@ Build a restaurant health grades application that allows users to login/register
 * Step 8 - Checked syntax, and updated ReadMe.
 
 ## AUTHORS
-Bhavika Desai - Initial work - Bhavika Desai
+Bhavika Desai - Initial work.
 
 ## LICENSE
 This project is licensed under the MIT License.
