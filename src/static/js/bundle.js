@@ -27415,7 +27415,7 @@
 	    value: function getDOHMHData() {
 	      var _this2 = this;
 	
-	      _superagent2.default.get('data/healthgrades.json').then(function (response) {
+	      _superagent2.default.get('./src/static/data/healthgrades.json').then(function (response) {
 	        var restaurantData = response.body;
 	        var cleanData = restaurantData.data.map(function (inspectionData) {
 	          var _inspectionData = _slicedToArray(inspectionData, 26);
