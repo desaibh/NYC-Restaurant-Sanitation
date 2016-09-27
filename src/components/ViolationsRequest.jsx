@@ -22,7 +22,7 @@ class ViolationsRequest extends Component {
     this.getDOHMHData();
   }
   getDOHMHData() {
-    request.get('data/healthgrades.json').then((response) => {
+    request.get('./src/static/data/healthgrades.json').then((response) => {
       const restaurantData = response.body;
       const cleanData = restaurantData.data.map((inspectionData) => {
         const [sid, id, position, createdAt, createdMeta,
