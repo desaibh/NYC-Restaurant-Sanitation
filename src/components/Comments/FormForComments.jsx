@@ -22,7 +22,7 @@ class FormForComments extends Component {
     this.httpPublishPost = this.httpPublishPost.bind(this);
     this.httpDeletePost = this.httpDeletePost.bind(this);
   }
-  componentDidMount() {  // Only happens once.. on first load
+  componentDidMount() {
     this.httpGetPosts();
   }
   httpGetPosts() {
@@ -117,12 +117,11 @@ class FormForComments extends Component {
             posts={this.state.posts}
           /> : false
         }
-        {/* {this.props.viewComment ? <PostComments
-            handlePublish={this.handlePublish}
-            posts={this.state.posts} /> : false } */}
+
         <PostComments handlePublish={this.handlePublish} />
       </div>
     );
+    <ViewComments posts={this.state.posts} />
   }
 }
 

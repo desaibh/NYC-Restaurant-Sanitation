@@ -15,7 +15,7 @@ const propTypes = {
   action: React.PropTypes.string,
   violationCode: React.PropTypes.string,
   violationDescription: React.PropTypes.string,
-  score: React.PropTypes.number,
+  score: React.PropTypes.string,
   criticalFlag: React.PropTypes.string,
 };
 class ViolationsView extends Component {
@@ -23,23 +23,28 @@ class ViolationsView extends Component {
     return (
       <div className="door">
         <h3>{this.props.restaurant}</h3>
-        <p>Address: <br />
-          {this.props.building}&nbsp;
-          {this.props.street},&nbsp;
-          {this.props.zip} <br />
-          Telephone: {this.props.phone} </p>
-        <p>Cuisine: <br />
-          {this.props.cuisine} </p>
-        <p>Inspection Information <br />
-          Grade: {this.props.grade}<br />
-          Grade Date: {this.props.gradeDate}<br />
-          Inspection Type: {this.props.inspectionType}<br />
-          Date of Inspection: {this.props.inspectionDate} <br />
-          Action: {this.props.action} <br />
-          Violation: {this.props.violationCode} &mdash; {this.props.violationDescription}<br />
-          Critical Flag: {this.props.criticalFlag} <br />
-          Score: {this.props.score}
-        </p>
+        <div className="rightdiv">
+          <p><strong>Issues:</strong> <br />
+            {this.props.action}:<br />
+            <strong>Violation:</strong> {this.props.violationCode}<br />
+            <strong>Description:</strong> {this.props.violationDescription}<br />
+            <strong>Critical Flag:</strong> {this.props.criticalFlag} <br />
+            <strong>Score:</strong> {this.props.score}
+          </p>
+        </div>
+        <div className="leftdiv">
+          <p><strong>Address:</strong> <br />
+            {this.props.building}&nbsp;
+            {this.props.street},&nbsp;
+            {this.props.zip} <br />
+            <strong>Telephone:</strong> {this.props.phone} </p>
+          <p><strong>Cuisine:</strong><br />
+            {this.props.cuisine} </p>
+          <p><strong>Inspection Information:</strong><br />
+            <strong>Grade:</strong> {this.props.grade}<br />
+            <strong>Grade Date:</strong> {this.props.gradeDate}<br />
+            <strong>Inspection Type:</strong> {this.props.inspectionType}</p>
+        </div>
         <Comments />
       </div>
     );

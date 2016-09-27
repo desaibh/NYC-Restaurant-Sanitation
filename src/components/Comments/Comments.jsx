@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import request from 'superagent';
 import CommentsView from './CommentsView.jsx';
 import CommentsWindowModal from './CommentsWindowModal.jsx';
 
