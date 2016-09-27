@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import firebase from '../../../firebase.config.js';
 import { withRouter } from 'react-router';
 
@@ -8,19 +8,19 @@ class Register extends Component {
     this.state = {
       username: '',
       password: '',
-      showHide: 'show'
-    }
+      showHide: 'show',
+    };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(e) {
     const stateObj = {};
     const stateKey = e.target.name;
-    stateObj[stateKey]  = e.target.value;
+    stateObj[stateKey] = e.target.value;
     this.setState(stateObj);
   }
   handleSubmit(e) {
-    const {username, password} = this.state;
+    const { username, password } = this.state;
     firebase.auth()
       .createUserWithEmailAndPassword(username, password)
       .catch((err) => {
@@ -29,16 +29,16 @@ class Register extends Component {
       .then((user) => {
         firebase.database().ref('users')
         .child(user.uid)
-        .set({first_name: '', last_name: '', email: username})
+        .set({ first_name: '', last_name: '', email: username });
       })
       .then(() => {
         if (this.state.showHide == 'hide') {
           this.setState({
-            showHide: 'show'
+            showHide: 'show',
           });
         } else {
           this.setState({
-            showHide: 'hide'
+            showHide: 'hide',
           });
         }
       });
@@ -49,16 +49,26 @@ class Register extends Component {
         <div id="register-form">
           <h1>Please register a new account to leave a comment.</h1>
           <div>
-            <input name="username" onChange={this.handleChange} type="text" placeholder="username" />
+            <input
+              name="username"
+              onChange={this.handleChange}
+              type="text"
+              placeholder="username"
+            />
           </div>
           <div>
-            <input name="password" onChange={this.handleChange} type="password" placeholder="password" />
+            <input
+              name="password"
+              onChange={this.handleChange}
+              type="password"
+              placeholder="password"
+            />
           </div>
           <div className="clear"></div>
           <input type="submit" value="Register" onClick={this.handleSubmit} />
         </div>
       </div>
-    )
+    );
   }
 }
 

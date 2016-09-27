@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import request from 'superagent';
 import CommentsView from './CommentsView.jsx';
 import CommentsWindowModal from './CommentsWindowModal.jsx';
-import Main from '../Login/Main.jsx';
 
 const propTypes = {
   restaurant: React.PropTypes.string,

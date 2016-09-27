@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ViolationsApp from './ViolationsApp.jsx';
 
 class App extends Component {
@@ -7,7 +7,7 @@ class App extends Component {
       <div>
         <ViolationsApp />
       </div>
-    )
+    );
   }
 }
 

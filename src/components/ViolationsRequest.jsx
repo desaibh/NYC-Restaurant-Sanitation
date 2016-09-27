@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import request from 'superagent';
 import ViolationsView from './ViolationsView.jsx';
 import PostComments from './Comments/PostComments.jsx';
@@ -20,9 +20,6 @@ class ViolationsRequest extends Component {
   }
   componentDidMount() {
     this.getDOHMHData();
-    this.setState({
-      valueFound: false,
-    })
   }
   getDOHMHData() {
     request.get('/data/healthgrades.json').then((response) => {
@@ -35,7 +32,6 @@ class ViolationsRequest extends Component {
           violationDescription, criticalFlag, score, grade,
           gradeDate, recordDate, inspectionType] = inspectionData;
         return {
-          sid: sid,
           restaurant: dba,
           building: building,
           street: street,
@@ -60,42 +56,46 @@ class ViolationsRequest extends Component {
   }
   render() {
     const violationElements = this.state.doors.map((door, idx) => {
-    if (this.props.submit == true &&
+      if (this.props.submit == true &&
         door.restaurant !== null &&
         door.restaurant.length >= 3 &&
         door.restaurant.indexOf(this.props.restaurant) !== -1) {
-      this.state.valueFound = true;
-      this.state.restaurant = door.restaurant;
-      this.state.location = door.location;
-      return (
-        <ViolationsView key={idx}
-                        restaurant={door.restaurant}
-                        building={door.building}
-                        street={door.street}
-                        zip={door.zip}
-                        phone={door.phone}
-                        cuisine={door.cuisine}
-                        inspectionDate={door.inspectionDate}
-                        action={door.action}
-                        violationCode={door.violationCode}
-                        violationDescription={door.violationDescription}
-                        criticalFlag={door.criticalFlag}
-                        score={door.score}
-                        grade={door.grade}
-                        gradeDate={door.gradeDate}
-                        inspectionType={door.inspectionType}
+        this.state.valueFound = true;
+        this.state.restaurant = door.restaurant;
+        this.state.location = door.location;
+        return (
+          <ViolationsView
+            key={idx}
+            restaurant={door.restaurant}
+            building={door.building}
+            street={door.street}
+            zip={door.zip}
+            phone={door.phone}
+            cuisine={door.cuisine}
+            inspectionDate={door.inspectionDate}
+            action={door.action}
+            violationCode={door.violationCode}
+            violationDescription={door.violationDescription}
+            criticalFlag={door.criticalFlag}
+            score={door.score}
+            grade={door.grade}
+            gradeDate={door.gradeDate}
+            inspectionType={door.inspectionType}
           />
-        )
+        );
       }
     });
-    <PostComments restaurant = {this.state.restaurant} location = {this.state.location} />
-    if (this.state.valueFound == false && this.props.submit == true) {
+    <PostComments
+      restaurant={this.state.restaurant}
+      location={this.state.location}
+    />
+    if (this.state.valueFound === false && this.props.submit === true) {
       return (
         <div>
           <h1> No results found.</h1>
         </div>
-      )
-    };
+      );
+    }
     return (
       <div>
         {violationElements}
@@ -104,6 +104,6 @@ class ViolationsRequest extends Component {
   }
 }
 
-ViolationsView.propTypes = propTypes;
+ViolationsRequest.propTypes = propTypes;
 
 export default ViolationsRequest;

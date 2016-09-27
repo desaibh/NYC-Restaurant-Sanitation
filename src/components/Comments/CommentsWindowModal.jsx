@@ -1,6 +1,5 @@
 import React from 'react';
 import Main from '../Login/Main.jsx';
-import SignUp from '../Login/SignUp.jsx';
 
 
 const propTypes = {

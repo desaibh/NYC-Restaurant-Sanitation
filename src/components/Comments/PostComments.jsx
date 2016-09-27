@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router';
-import App from '../App.jsx'
 
 const propTypes = {
+  restaurant: React.PropTypes.string,
+  location: React.PropTypes.string,
   rating: React.PropTypes.number,
-  comments: React.PropTypes.string,
-}
+  comment: React.PropTypes.string,
+  handlePublish: React.PropTypes.func,
+};
 
 class PostComments extends React.Component {
   constructor(props) {
@@ -62,9 +64,9 @@ class PostComments extends React.Component {
       restaurant: this.state.localRestaurant,
       location: this.state.localLocation,
       comment: this.state.localComment,
-      rating: this.state.localRating
+      rating: this.state.localRating,
     });
-    this.setState({ save: 'true' })
+    this.setState({ save: 'true' });
   }
   isSaved() {
     return this.props.restaurant === this.state.localRestaurant &&
@@ -75,51 +77,53 @@ class PostComments extends React.Component {
   render() {
     return (
       <div className={this.isSaved() ? 'saved' : 'not-saved'} >
-        <h2> Please Leave Your Comment Here </h2>
+        <h2>Rate This Restaurant</h2>
         <form className="post-display" onSubmit={this.handleSubmit}>
           <input
             type="text"
             name="Restaurant"
-            placeholder = "Restaurant"
+            placeholder="Restaurant"
             value={this.state.localRestaurant}
             onChange={this.handleEditOfRestaurant}
           />
           <input
             type="text"
             name="Location"
-            placeholder = "Restaurant Location"
+            placeholder="Restaurant Location"
             value={this.state.localLocation}
             onChange={this.handleEditOfLocation}
           />
           <div className="clear"></div>
           <input
-              type="number"
-              name="Rating"
-              min="0"
-              max="10"
-              placeholder = "Restaurant Rating (1-10 scale)"
-              value={this.state.localRating}
-              onChange={this.handleEditOfRating}
-            />
-            <div className="clear"></div>
-            <input
-              type="text"
-              name="Comment"
-              placeholder = "Tell Us About Your Experience"
-              value={this.state.localComment}
-              onChange={this.handleEditOfComment}
-            />
-            <div className="clear"></div>
-            <input
-              type="submit"
-              value="SAVE"
-              className="hidden"
-            />
+            type="number"
+            name="Rating"
+            min="0"
+            max="10"
+            placeholder="Restaurant Rating (1-10 scale)"
+            value={this.state.localRating}
+            onChange={this.handleEditOfRating}
+          />
+          <div className="clear"></div>
+          <input
+            type="text"
+            name="Comment"
+            placeholder="Tell Us About Your Experience"
+            value={this.state.localComment}
+            onChange={this.handleEditOfComment}
+          />
+          <div className="clear"></div>
+          <input
+            type="submit"
+            value="SAVE"
+            className="hidden"
+          />
         </form>
         {this.state.save ? <Link to="/home" /> : false}
       </div>
     );
   }
 }
+
+PostComments.propTypes = propTypes;
 
 export default withRouter(PostComments);
