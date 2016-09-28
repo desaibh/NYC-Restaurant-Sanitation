@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import request from 'superagent';
 import ViolationsView from './ViolationsView.jsx';
 import PostComments from './Comments/PostComments.jsx';
+import firebase from '../../firebase.config.js';
 
 const propTypes = {
   restaurant: React.PropTypes.string,
@@ -22,7 +23,8 @@ class ViolationsRequest extends Component {
     this.getDOHMHData();
   }
   getDOHMHData() {
-    request.get('./src/static/data/healthgrades.json').then((response) => {
+    rootRef = new Firebase('https://restaurant-react.firebaseio.com/data.json');
+    request.send(rootRef).then((response) => {
       const restaurantData = response.body;
       const cleanData = restaurantData.data.map((inspectionData) => {
         const [sid, id, position, createdAt, createdMeta,

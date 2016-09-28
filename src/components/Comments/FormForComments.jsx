@@ -117,7 +117,6 @@ class FormForComments extends Component {
             posts={this.state.posts}
           /> : false
         }
-
         <PostComments handlePublish={this.handlePublish} />
       </div>
     );

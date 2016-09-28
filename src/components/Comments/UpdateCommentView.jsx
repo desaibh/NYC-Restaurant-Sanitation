@@ -10,7 +10,6 @@ const propTypes = {
   handlePublish: React.PropTypes.func,
   handleDelete: React.PropTypes.func,
 };
-
 class UpdateCommentView extends React.Component {
   constructor(props) {
     super(props);
