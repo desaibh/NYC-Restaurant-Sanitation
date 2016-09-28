@@ -23,44 +23,45 @@ class ViolationsRequest extends Component {
     this.getDOHMHData();
   }
   getDOHMHData() {
-    rootRef = new Firebase('https://restaurant-react.firebaseio.com/data.json');
-    request.send(rootRef).then((response) => {
-      const restaurantData = response.body;
-      const cleanData = restaurantData.data.map((inspectionData) => {
-        const [sid, id, position, createdAt, createdMeta,
-          updatedAt, updatedMeta, meta, camis, dba, boro,
-          building, street, zipcode, phone, cuisine,
-          inspectionDate, action, violationCode,
-          violationDescription, criticalFlag, score, grade,
-          gradeDate, recordDate, inspectionType] = inspectionData;
-        return {
-          restaurant: dba,
-          building: building,
-          street: street,
-          zip: zipcode,
-          phone: phone,
-          cuisine: cuisine,
-          inspectionDate: inspectionDate,
-          action: action,
-          violationCode: violationCode,
-          violationDescription: violationDescription,
-          criticalFlag: criticalFlag,
-          score: score,
-          grade: grade,
-          gradeDate: gradeDate,
-          inspectionType: inspectionType,
-        };
-      });
-      this.setState({
-        doors: cleanData,
-      });
+    let restaurantData = {};
+    let dbref = firebase.database().ref().child('data');
+    dbref.once('value', snap => {
+      restaurantData = snap.val();
+      const cleanData = restaurantData.map((inspectionData) => {
+          const [sid, id, position, createdAt, createdMeta,
+          updatedAt, updatedMeta, meta, camis, dba,
+          boro, building, street, zipcode, phone,
+          cuisine, inspectionDate, action, violationCode, violationDescription,
+          criticalFlag, score, grade, gradeDate, recordDate,
+          inspectionType] = inspectionData;
+          return {
+            restaurant: dba,
+            building,
+            street,
+            zip: zipcode,
+            phone,
+            cuisine,
+            inspectionDate,
+            action,
+            violationCode,
+            violationDescription,
+            criticalFlag,
+            score,
+            grade,
+            gradeDate,
+            inspectionType,
+          };
+        });
+        this.setState({
+          doors: cleanData,
+        });
     });
   }
   render() {
     const violationElements = this.state.doors.map((door, idx) => {
       if (this.props.submit == true &&
         door.restaurant !== null &&
-        door.restaurant.length >= 3 &&
+        door.restaurant !== undefined &&
         door.restaurant.indexOf(this.props.restaurant) !== -1) {
         this.state.valueFound = true;
         this.state.restaurant = door.restaurant;
