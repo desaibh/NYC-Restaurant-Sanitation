@@ -6,7 +6,7 @@ import firebase from '../../firebase.config.js';
 
 const propTypes = {
   restaurant: React.PropTypes.string,
-  submit: React.PropTypes.boolean,
+  submitted: React.PropTypes.boolean,
 };
 
 class ViolationsRequest extends Component {
@@ -59,7 +59,7 @@ class ViolationsRequest extends Component {
   }
   render() {
     const violationElements = this.state.doors.map((door, idx) => {
-      if (this.props.submit == true &&
+      if (this.props.submitted == true &&
         door.restaurant !== null &&
         door.restaurant !== undefined &&
         door.restaurant.indexOf(this.props.restaurant) !== -1) {

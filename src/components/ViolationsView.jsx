@@ -23,15 +23,6 @@ class ViolationsView extends Component {
     return (
       <div className="door">
         <h3>{this.props.restaurant}</h3>
-        <div className="rightdiv">
-          <p><strong>Issues:</strong> <br />
-            {this.props.action}:<br />
-            <strong>Violation:</strong> {this.props.violationCode}<br />
-            <strong>Description:</strong> {this.props.violationDescription}<br />
-            <strong>Critical Flag:</strong> {this.props.criticalFlag} <br />
-            <strong>Score:</strong> {this.props.score}
-          </p>
-        </div>
         <div className="leftdiv">
           <p><strong>Address:</strong> <br />
             {this.props.building}&nbsp;
@@ -45,6 +36,15 @@ class ViolationsView extends Component {
             <strong>Grade Date:</strong> {this.props.gradeDate}<br />
             <strong>Inspection Type:</strong> {this.props.inspectionType}</p>
         </div>
+        <div className="rightdiv">
+          <p><strong>{this.props.action}</strong> <br />
+            {this.props.violationDescription}</p>
+          <p><strong>Violation:</strong> {this.props.violationCode}</p>
+          <p><strong>Critical Flag:</strong> {this.props.criticalFlag} <br />
+            <strong>Score:</strong> {this.props.score}
+          </p>
+        </div>
+
         <Comments />
       </div>
     );

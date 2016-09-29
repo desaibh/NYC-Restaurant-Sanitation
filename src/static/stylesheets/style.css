@@ -107,6 +107,7 @@ footer a, footer a:visited {
   background: rgb(255, 255, 255);
   border: 5px #dcdcdc solid;
   overflow: scroll;
+  box-sizing: border-box;
 }
 #show-comments {
   position: relative;
@@ -148,7 +149,6 @@ footer a, footer a:visited {
 .rightdiv {
   width: 49%;
   margin-right: 1%;
-  float: right;
   overflow: auto;
   zoom: 1;
 }
@@ -156,6 +156,7 @@ footer a, footer a:visited {
   width: 49%;
   margin-right: 1%;
   overflow: auto;
+  float: left;
   zoom: 1
 }
 @media (max-width: 600px) {

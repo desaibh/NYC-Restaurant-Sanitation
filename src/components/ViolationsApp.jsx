@@ -15,7 +15,9 @@ class ViolationsApp extends Component {
   }
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({ submit: true });
+    if (this.state.restaurant !== '') {
+      this.setState({ submitted: true });
+    }
   }
   handleChange(e) {
     const data = (e.target.value).toUpperCase();
@@ -35,14 +37,14 @@ class ViolationsApp extends Component {
               placeholder="Restaurant lookup"
               type="text"
             />
-            <input type="submit" />
+            <input type="submit"  />
           </form>
-          <ViolationsRequest restaurant={this.state.restaurant} submit={this.state.submit} />
+          <ViolationsRequest restaurant={this.state.restaurant} submitted={this.state.submitted} />
         </div>
         <footer>
           <p>This website brings you information about New York City restaurant&nbsp;
           grades and sanitation by parsing through the&nbsp;
-          inspection Data found on the NYC Department of Health &amp;
+          inspection Data found on the NYC Department of Health &amp;&nbsp;
           Mental Hygiene's open-source platform,&nbsp;
           <a href="https://data.cityofnewyork.us/Health/DOHMH-New-York-City-Restaurant-Inspection-Results/xx67-kt59/data" target="_blank">
           Open Data</a>.</p>
