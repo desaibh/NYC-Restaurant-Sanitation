@@ -120,7 +120,7 @@ class FormForComments extends Component {
         <PostComments handlePublish={this.handlePublish} />
       </div>
     );
-    <ViewComments posts={this.state.posts} />
+    <ViewComments posts={this.state.posts}  />
   }
 }
 

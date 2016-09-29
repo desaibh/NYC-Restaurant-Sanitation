@@ -1,10 +1,9 @@
 import React from 'react';
 import Main from '../Login/Main.jsx';
 
-
 const propTypes = {
-  // url: React.PropTypes.string.isRequired,
   closeModal: React.PropTypes.func.isRequired,
+  restaurant: React.PropTypes.string.isRequired,
 };
 
 const CommentsWindowModal = ({ closeModal }) => {

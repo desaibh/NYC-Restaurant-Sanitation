@@ -44,8 +44,7 @@ class ViolationsView extends Component {
             <strong>Score:</strong> {this.props.score}
           </p>
         </div>
-
-        <Comments />
+        <Comments restaurant={this.props.restaurant} />
       </div>
     );
   }

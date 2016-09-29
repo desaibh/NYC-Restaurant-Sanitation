@@ -11,6 +11,7 @@ class Comments extends Component {
     super(props);
     this.state = {
       modalOpen: false,
+      restaurant: '',
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -19,6 +20,7 @@ class Comments extends Component {
   openModal() {
     this.setState({
       modalOpen: true,
+      restaurant: this.props.restaurant,
     });
   }
   closeModal() {
@@ -33,7 +35,7 @@ class Comments extends Component {
         <CommentsView
           openModal={this.openModal}
         />
-        { this.state.modalOpen ? <CommentsWindowModal closeModal={this.closeModal} /> : false }
+        { this.state.modalOpen ? <CommentsWindowModal closeModal={this.closeModal} restaurant={this.state.restaurant} /> : false }
       </div>
     );
   }
