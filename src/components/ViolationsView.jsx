@@ -28,6 +28,7 @@ class ViolationsView extends Component {
             {this.props.building}&nbsp;
             {this.props.street},&nbsp;
             {this.props.zip} <br />
+            {this.phoneView}
             <strong>Telephone:</strong> {this.props.phone} </p>
           <p><strong>Cuisine:</strong><br />
             {this.props.cuisine} </p>

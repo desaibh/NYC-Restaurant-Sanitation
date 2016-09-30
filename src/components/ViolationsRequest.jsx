@@ -17,6 +17,7 @@ class ViolationsRequest extends Component {
       valueFound: false,
       restaurant: '',
       location: '',
+      phone: '',
     };
   }
   componentDidMount() {
@@ -39,7 +40,7 @@ class ViolationsRequest extends Component {
             building,
             street,
             zip: zipcode,
-            phone,
+            phone: phone,
             cuisine,
             inspectionDate,
             action,
@@ -57,6 +58,14 @@ class ViolationsRequest extends Component {
         });
     });
   }
+  formatPhone(phone) {
+    let tempPhone = phone.toString();
+    tempPhone = tempPhone.splice(3, 0,'.');
+    tempPhone = tempPhone.splice(8, 0,'.');
+    this.setState({
+      phone: tempPhone,
+    });
+  }
   render() {
     const violationElements = this.state.doors.map((door, idx) => {
       if (this.props.submitted == true &&
@@ -66,6 +75,8 @@ class ViolationsRequest extends Component {
         this.state.valueFound = true;
         this.state.restaurant = door.restaurant;
         this.state.location = door.location;
+        this.formatPhone(door.phone);
+        {console.log(this.state.phone)}
         return (
           <ViolationsView
             key={idx}
@@ -73,7 +84,7 @@ class ViolationsRequest extends Component {
             building={door.building}
             street={door.street}
             zip={door.zip}
-            phone={door.phone}
+            phone={this.state.phone}
             cuisine={door.cuisine}
             inspectionDate={door.inspectionDate}
             action={door.action}
@@ -96,6 +107,7 @@ class ViolationsRequest extends Component {
       return (
         <div>
           <h1> No results found.</h1>
+
         </div>
       );
     }
