@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import firebase from '../../../firebase.config.js';
 import { withRouter } from 'react-router';
+import firebase from '../../../firebase.config.js';
 
 class Register extends Component {
   constructor() {
