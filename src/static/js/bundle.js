@@ -27244,6 +27244,7 @@
 	
 	    _this.state = {
 	      restaurant: '',
+	      value: '',
 	      submit: false
 	    };
 	    _this.handleChange = _this.handleChange.bind(_this);
@@ -27292,12 +27293,13 @@
 	            _react2.default.createElement('input', {
 	              value: this.state.restaurant,
 	              onChange: this.handleChange,
+	              onFocus: this.state.value,
 	              placeholder: 'Restaurant lookup',
 	              type: 'text'
 	            }),
 	            _react2.default.createElement('input', { type: 'submit' })
 	          ),
-	          _react2.default.createElement(_ViolationsRequest2.default, { restaurant: this.state.restaurant, submitted: this.state.submitted })
+	          _react2.default.createElement(_ViolationsRequest2.default, { restaurant: this.state.restaurant, submittedState: this.state.submitted })
 	        ),
 	        _react2.default.createElement(
 	          'footer',
@@ -27391,7 +27393,7 @@
 	
 	var propTypes = {
 	  restaurant: _react2.default.PropTypes.string,
-	  submitted: _react2.default.PropTypes.boolean
+	  submittedState: _react2.default.PropTypes.boolean
 	};
 	
 	var ViolationsRequest = function (_Component) {
@@ -27484,7 +27486,7 @@
 	      var _this3 = this;
 	
 	      var violationElements = this.state.doors.map(function (door, idx) {
-	        if (_this3.props.submitted == true && door.restaurant !== null && door.restaurant !== undefined && door.restaurant.indexOf(_this3.props.restaurant) !== -1) {
+	        if (_this3.props.submittedState == true && door.restaurant !== null && door.gradeDate !== undefined && door.gradeDate !== null && door.restaurant !== undefined && door.restaurant.indexOf(_this3.props.restaurant) !== -1) {
 	          _this3.state.valueFound = true;
 	          _this3.state.restaurant = door.restaurant;
 	          _this3.state.location = door.location;
@@ -27512,14 +27514,14 @@
 	        restaurant: this.state.restaurant,
 	        location: this.state.location
 	      });
-	      if (this.state.valueFound === false && this.props.submit === true) {
+	      if (this.state.valueFound === false && this.props.submittedState === true) {
 	        return _react2.default.createElement(
 	          'div',
 	          null,
 	          _react2.default.createElement(
 	            'h1',
 	            null,
-	            ' No results found.'
+	            ' No results found. '
 	          )
 	        );
 	      }
@@ -29198,7 +29200,6 @@
 	      this.setState({
 	        phone: tempPhone
 	      });
-	      console.log(this.state.phone);
 	    }
 	  }, {
 	    key: 'formatGradeDate',
@@ -29207,7 +29208,6 @@
 	      this.setState({
 	        gradeDate: tempGradeDate
 	      });
-	      console.log(this.state.gradeDate);
 	    }
 	  }, {
 	    key: 'render',
@@ -29360,7 +29360,7 @@
 	              _react2.default.createElement(
 	                'strong',
 	                null,
-	                'Critical Flag:'
+	                'Flag:'
 	              ),
 	              ' ',
 	              _react2.default.createElement('br', null),

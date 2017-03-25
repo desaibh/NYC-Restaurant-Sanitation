@@ -6,6 +6,7 @@ class ViolationsApp extends Component {
     super();
     this.state = {
       restaurant: '',
+      value: '',
       submit: false,
     };
     this.handleChange = this.handleChange.bind(this);
@@ -34,12 +35,13 @@ class ViolationsApp extends Component {
             <input
               value={this.state.restaurant}
               onChange={this.handleChange}
+              onFocus={this.state.value}
               placeholder="Restaurant lookup"
               type="text"
             />
             <input type="submit"  />
           </form>
-          <ViolationsRequest restaurant={this.state.restaurant} submitted={this.state.submitted} />
+          <ViolationsRequest restaurant={this.state.restaurant} submittedState={this.state.submitted} />
         </div>
         <footer>
           <p>This website brings you information about New York City restaurant&nbsp;

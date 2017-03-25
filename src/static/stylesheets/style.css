@@ -151,13 +151,13 @@ footer a, footer a:visited {
 }
 .rightdiv {
   width: 14%;
-  ppadding: 4% 4% 0% 4%;
+  padding: 4% 4% 0% 4%;
   overflow: auto;
   zoom: 1;
 }
 .leftdiv {
   width: 70%;
-  padding: 4% 4% 0% 4%;
+  padding: 0% 4%;
   overflow:  visible;
   float: left;
   zoom: 1

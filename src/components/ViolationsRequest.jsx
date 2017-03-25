@@ -6,7 +6,7 @@ import firebase from '../../firebase.config.js';
 
 const propTypes = {
   restaurant: React.PropTypes.string,
-  submitted: React.PropTypes.boolean,
+  submittedState: React.PropTypes.boolean,
 };
 
 class ViolationsRequest extends Component {
@@ -59,8 +59,10 @@ class ViolationsRequest extends Component {
   }
   render() {
     const violationElements = this.state.doors.map((door, idx) => {
-      if (this.props.submitted == true &&
+      if (this.props.submittedState == true &&
         door.restaurant !== null &&
+        door.gradeDate !== undefined &&
+        door.gradeDate !== null &&
         door.restaurant !== undefined &&
         door.restaurant.indexOf(this.props.restaurant) !== -1) {
         this.state.valueFound = true;
@@ -92,11 +94,10 @@ class ViolationsRequest extends Component {
       restaurant={this.state.restaurant}
       location={this.state.location}
     />
-    if (this.state.valueFound === false && this.props.submit === true) {
+    if (this.state.valueFound === false && this.props.submittedState === true) {
       return (
         <div>
-          <h1> No results found.</h1>
-
+          <h1> No results found. </h1>
         </div>
       );
     }

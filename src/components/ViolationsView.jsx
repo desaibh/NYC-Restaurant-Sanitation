@@ -36,14 +36,12 @@ class ViolationsView extends Component {
     this.setState({
       phone: tempPhone,
     });
-    console.log(this.state.phone);
   }
   formatGradeDate(gradeDate) {
     let tempGradeDate = `${gradeDate.slice(0,10)}`;
     this.setState({
       gradeDate: tempGradeDate,
     });
-    console.log(this.state.gradeDate);
   }
   render() {
     return (
@@ -77,7 +75,7 @@ class ViolationsView extends Component {
             {this.props.violationCode}</p>
           </div>
           <div className="circular">
-            <p><strong>Critical Flag:</strong> <br />
+            <p><strong>Flag:</strong> <br />
             {this.props.criticalFlag} </p>
           </div>
           <div className="clear"></div>
