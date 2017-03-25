@@ -73,7 +73,9 @@ header h1 {
   font-family: sans-serif;
   font-variant: small-caps;
 }
-
+footer {
+  padding: 10px;
+}
 footer p {
   text-align: center;
   color: grey;
@@ -82,7 +84,6 @@ footer p {
   font-size: 1rem;
   width: 90%;
   margin: 10px auto;
-  background-color: rgba(255,255,255, .6);
 }
 footer a, footer a:visited {
   text-align: center;
@@ -163,7 +164,7 @@ footer a, footer a:visited {
   float: left;
   zoom: 1
 }
-div .door {
+div .door, footer {
   background-color: rgba(255,255,255, .6);
   margin: 20px;
   border-radius: 20px;
