@@ -29176,10 +29176,40 @@
 	  function ViolationsView() {
 	    _classCallCheck(this, ViolationsView);
 	
-	    return _possibleConstructorReturn(this, (ViolationsView.__proto__ || Object.getPrototypeOf(ViolationsView)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (ViolationsView.__proto__ || Object.getPrototypeOf(ViolationsView)).call(this));
+	
+	    _this.state = {
+	      phone: '',
+	      gradeDate: ''
+	    };
+	    return _this;
 	  }
 	
 	  _createClass(ViolationsView, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      this.formatPhone(this.props.phone);
+	      this.formatGradeDate(this.props.gradeDate);
+	    }
+	  }, {
+	    key: 'formatPhone',
+	    value: function formatPhone(phone) {
+	      var tempPhone = '(' + phone.slice(0, 3) + ') ' + phone.slice(3, 6) + '-' + phone.slice(6, 11);
+	      this.setState({
+	        phone: tempPhone
+	      });
+	      console.log(this.state.phone);
+	    }
+	  }, {
+	    key: 'formatGradeDate',
+	    value: function formatGradeDate(gradeDate) {
+	      var tempGradeDate = '' + gradeDate.slice(0, 10);
+	      this.setState({
+	        gradeDate: tempGradeDate
+	      });
+	      console.log(this.state.gradeDate);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -29210,13 +29240,14 @@
 	            this.props.zip,
 	            ' ',
 	            _react2.default.createElement('br', null),
+	            this.phoneView,
 	            _react2.default.createElement(
 	              'strong',
 	              null,
 	              'Telephone:'
 	            ),
 	            ' ',
-	            this.props.phone,
+	            this.state.phone,
 	            ' '
 	          ),
 	          _react2.default.createElement(
@@ -29238,23 +29269,19 @@
 	              'strong',
 	              null,
 	              'Inspection Information:'
-	            ),
-	            _react2.default.createElement('br', null),
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Grade:'
-	            ),
-	            ' ',
-	            this.props.grade,
-	            _react2.default.createElement('br', null),
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clear' }),
+	          _react2.default.createElement(
+	            'p',
+	            null,
 	            _react2.default.createElement(
 	              'strong',
 	              null,
 	              'Grade Date:'
 	            ),
 	            ' ',
-	            this.props.gradeDate,
+	            this.state.gradeDate,
 	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'strong',
@@ -29263,11 +29290,8 @@
 	            ),
 	            ' ',
 	            this.props.inspectionType
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'rightdiv' },
+	          ),
+	          _react2.default.createElement('div', { className: 'clear' }),
 	          _react2.default.createElement(
 	            'p',
 	            null,
@@ -29280,29 +29304,10 @@
 	            _react2.default.createElement('br', null),
 	            this.props.violationDescription
 	          ),
+	          _react2.default.createElement('div', { className: 'clear' }),
 	          _react2.default.createElement(
 	            'p',
 	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Violation:'
-	            ),
-	            ' ',
-	            this.props.violationCode
-	          ),
-	          _react2.default.createElement(
-	            'p',
-	            null,
-	            _react2.default.createElement(
-	              'strong',
-	              null,
-	              'Critical Flag:'
-	            ),
-	            ' ',
-	            this.props.criticalFlag,
-	            ' ',
-	            _react2.default.createElement('br', null),
 	            _react2.default.createElement(
 	              'strong',
 	              null,
@@ -29311,6 +29316,59 @@
 	            ' ',
 	            this.props.score
 	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'rightdiv' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'circular' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              _react2.default.createElement(
+	                'strong',
+	                null,
+	                'Grade:'
+	              ),
+	              _react2.default.createElement('br', null),
+	              ' ',
+	              this.props.grade
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'circular' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              _react2.default.createElement(
+	                'strong',
+	                null,
+	                'Code'
+	              ),
+	              _react2.default.createElement('br', null),
+	              this.props.violationCode
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'circular' },
+	            _react2.default.createElement(
+	              'p',
+	              null,
+	              _react2.default.createElement(
+	                'strong',
+	                null,
+	                'Critical Flag:'
+	              ),
+	              ' ',
+	              _react2.default.createElement('br', null),
+	              this.props.criticalFlag,
+	              ' '
+	            )
+	          ),
+	          _react2.default.createElement('div', { className: 'clear' })
 	        ),
 	        _react2.default.createElement(_Comments2.default, { restaurant: this.props.restaurant })
 	      );

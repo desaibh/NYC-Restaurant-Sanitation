@@ -19,6 +19,32 @@ const propTypes = {
   criticalFlag: React.PropTypes.string,
 };
 class ViolationsView extends Component {
+  constructor() {
+    super();
+    this.state = {
+      phone: '',
+      gradeDate: '',
+    };
+  }
+  componentDidMount() {
+    this.formatPhone(this.props.phone);
+    this.formatGradeDate(this.props.gradeDate);
+
+  }
+  formatPhone(phone) {
+    let tempPhone = `(${phone.slice(0,3)}) ${phone.slice(3,6)}-${phone.slice(6,11)}`;
+    this.setState({
+      phone: tempPhone,
+    });
+    console.log(this.state.phone);
+  }
+  formatGradeDate(gradeDate) {
+    let tempGradeDate = `${gradeDate.slice(0,10)}`;
+    this.setState({
+      gradeDate: tempGradeDate,
+    });
+    console.log(this.state.gradeDate);
+  }
   render() {
     return (
       <div className="door">
@@ -29,21 +55,32 @@ class ViolationsView extends Component {
             {this.props.street},&nbsp;
             {this.props.zip} <br />
             {this.phoneView}
-            <strong>Telephone:</strong> {this.props.phone} </p>
+            <strong>Telephone:</strong> {this.state.phone} </p>
           <p><strong>Cuisine:</strong><br />
             {this.props.cuisine} </p>
-          <p><strong>Inspection Information:</strong><br />
-            <strong>Grade:</strong> {this.props.grade}<br />
-            <strong>Grade Date:</strong> {this.props.gradeDate}<br />
+          <p><strong>Inspection Information:</strong></p>
+          <div className="clear"></div>
+          <p><strong>Grade Date:</strong> {this.state.gradeDate}<br />
             <strong>Inspection Type:</strong> {this.props.inspectionType}</p>
-        </div>
-        <div className="rightdiv">
+          <div className="clear"></div>
           <p><strong>{this.props.action}</strong> <br />
             {this.props.violationDescription}</p>
-          <p><strong>Violation:</strong> {this.props.violationCode}</p>
-          <p><strong>Critical Flag:</strong> {this.props.criticalFlag} <br />
-            <strong>Score:</strong> {this.props.score}
-          </p>
+          <div className="clear"></div>
+            <p><strong>Score:</strong> {this.props.score}</p>
+        </div>
+        <div className="rightdiv">
+          <div className="circular" >
+            <p><strong>Grade:</strong><br /> {this.props.grade}</p>
+          </div>
+          <div className="circular">
+            <p><strong>Code</strong><br />
+            {this.props.violationCode}</p>
+          </div>
+          <div className="circular">
+            <p><strong>Critical Flag:</strong> <br />
+            {this.props.criticalFlag} </p>
+          </div>
+          <div className="clear"></div>
         </div>
         <Comments restaurant={this.props.restaurant} />
       </div>
