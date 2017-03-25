@@ -82,6 +82,7 @@ footer p {
   font-size: 1rem;
   width: 90%;
   margin: 10px auto;
+  background-color: rgba(255,255,255, .6);
 }
 footer a, footer a:visited {
   text-align: center;
@@ -163,7 +164,7 @@ footer a, footer a:visited {
   zoom: 1
 }
 div .door {
-  background-color: rgba(255,255,255, .5);
+  background-color: rgba(255,255,255, .6);
   margin: 20px;
   border-radius: 20px;
   -webkit-border-radius: 20px;
